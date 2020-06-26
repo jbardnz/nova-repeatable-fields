@@ -94,7 +94,7 @@ class Repeater extends Field
         $config = array_intersect_key($fieldConfig, array_flip($allowedKeys));
 
         if(! isset($config['name'])){
-            $config['name'] = str_slug($config['label'], '_');
+            $config['name'] = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '_', $config['label']), '-'));
         }
         if(! isset($config['placeholder'])){
             $config['placeholder'] = $config['label'];
